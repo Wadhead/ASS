@@ -1,5 +1,17 @@
 "use strict";
-const numberOFfilms= +prompt ("Сколько фильмов вы уже посмотрели",'' );
+
+let numberOFfilms;
+
+function start() {
+   numberOFfilms= +prompt ("Сколько фильмов вы уже посмотрели?",'');
+
+   while (numberOFfilms == '' || numberOFfilms == null || isNaN(numberOFfilms)) {
+      numberOFfilms= +prompt("Сколько фильмов вы уже посмотрели?", '');
+   }
+}
+start();
+
+
 
  const personalMovieDB = {
     cont: numberOFfilms,
@@ -10,36 +22,39 @@ const numberOFfilms= +prompt ("Сколько фильмов вы уже пос�
 
  };
 
-for (let i = 0; i < 2; i++){
-   
-   const a = prompt ('Один из последних просмотренных фильмов', ''),
-         b = prompt ('На сколько оценете его?', '');
-   
-   if (a !=null && b !== null && a != '' && a.length <50) {
 
-      personalMovieDB.movies[a] = b;
-      console.log('don');
 
-   }else {
-      console.log('Error');
-      i--;
-   }   
+function rememberMyFilms() {
+   for (let i = 0; i < 2; i++){
+      const a = prompt ('Один из последних просмотренных фильмов', ''),
+            b = prompt ('На сколько оценете его?', '');
+   
+      if (a !=null && b !== null && a != '' && a.length <50) {
+         personalMovieDB.movies[a] = b;
+         console.log('don');
 
-   
-   
+      }else {
+         console.log('Error');
+         i--;
+      }      
+   }
 }
 
+rememberMyFilms();
 
-if (personalMovieDB.cont < 10){
-   console.log('Просмотренно довольно мало фильмов');
-}else if (personalMovieDB.cont >= 10 && personalMovieDB.cont < 30) {
-   console.log("Вы классический зритель");
-}else if (personalMovieDB.cont >=30){
-   console.log("Вы киноман");
-}else{
-   console.log("Произошла ошибка");
+
+function detectPersonslLevel() {
+   if (personalMovieDB.cont < 10){
+    console.log('Просмотренно довольно мало фильмов');
+   }else if (personalMovieDB.cont >= 10 && personalMovieDB.cont < 30) {
+    console.log("Вы классический зритель");
+   }else if (personalMovieDB.cont >=30){
+    console.log("Вы киноман");
+   }else{
+    console.log("Произошла ошибка");
+   }
+
 }
-
-
+detectPersonslLevel();
 
 console.log(personalMovieDB);
