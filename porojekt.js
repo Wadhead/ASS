@@ -57,4 +57,18 @@ function detectPersonslLevel() {
 }
 detectPersonslLevel();
 
-console.log(personalMovieDB);
+function showMyDB(hidden) {
+   if (!hidden){
+      console.log(personalMovieDB);
+
+   }
+}
+showMyDB(personalMovieDB.privat);
+
+
+function wreteYourGeneres() {
+   for (let i = 1; i <= 3; i++){
+      personalMovieDB.genres[i - 1] = prompt(`Ваш лбвимый жанр пол номером ${i}`); 
+   }
+}
+wreteYourGeneres();
